@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 import argparse
-from generate_diff import generate_diff
+from gendiff.scripts.build_diff import generate_diff
 
 parser = argparse.ArgumentParser(
                     prog='Gendiff',
