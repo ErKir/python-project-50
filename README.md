@@ -4,7 +4,7 @@
 
 ## Get started
 
-Clone the repository and use make package-install command.
+Clone the repository and use make `package-install` command.
 
 ### Compare two simple JSON files
 
