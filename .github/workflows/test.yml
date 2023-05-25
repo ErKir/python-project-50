@@ -22,7 +22,6 @@ jobs:
           pip install poetry
           pip install pytest
           pip install flake8
-          make package-install
       - name: Lint and test
         run: |
           make test
