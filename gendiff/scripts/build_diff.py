@@ -24,22 +24,22 @@ def generate_diff(file1_path, file2_path, format='plain'):
         if key in file1 and key in file2:
             # print('key-', key)
             # print('key in file1 and key in file2')
-            value1 = file1[key]
-            value2 = file2[key]
+            value1 = str(file1[key])
+            value2 = str(file2[key])
             if value1 == value2:
                 # print('value1 == value2')
-                result += f'{not_changed}{key}:{value1}\n'
+                result += f'{not_changed}{key}: {value1}\n'
             else:
                 # print('value1 not equal value2')
-                result += f'{deleted}{key}:{value1}\n{added}{key}:{value2}\n'
-        elif key in file1 and not key in file2:
+                result += f'{deleted}{key}: {value1}\n{added}{key}: {value2}\n'
+        elif key in file1 and key not in file2:
             # print('key in file1 and not key in file2')
-            value1 = file1[key]
-            result += f'{deleted}{key}:{value1}\n'
+            value1 = str(file1[key])
+            result += f'{deleted}{key}: {value1}\n'
         else:
             # print('added key in file2')
-            value2 = file2[key]
-            result += f'{added}{key}:{value2}\n'
+            value2 = str(file2[key])
+            result += f'{added}{key}: {value2}\n'
     result += closed_bracket
     print(result)
     return result
