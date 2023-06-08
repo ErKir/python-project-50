@@ -9,3 +9,7 @@ Clone the repository and use make `package-install` command.
 ### Compare two simple JSON files
 
 [![asciicast](https://asciinema.org/a/4Ckelr0SsGcgulWL7JWSp9xnL.svg)](https://asciinema.org/a/4Ckelr0SsGcgulWL7JWSp9xnL)
+
+### Compare two simple YAML files
+
+[![asciicast](https://asciinema.org/a/2l2LuXXOIRHlTl1d48pjaX6Nv.svg)](https://asciinema.org/a/2l2LuXXOIRHlTl1d48pjaX6Nv)
