@@ -16,3 +16,10 @@ def test_with_json():
     filepath2 = get_fixture_path('file2.json')
     actual = generate_diff(filepath1, filepath2)
     assert actual == expected
+
+
+def test_with_yml():
+    filepath1 = get_fixture_path('file1.yml')
+    filepath2 = get_fixture_path('file2.yaml')
+    actual = generate_diff(filepath1, filepath2)
+    assert actual == expected

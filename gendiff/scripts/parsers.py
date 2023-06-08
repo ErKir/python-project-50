@@ -9,4 +9,4 @@ def parse(path):
     if normalized_name.endswith('json'):
         return json.load(open(path))
     else:
-        return yaml.load(open(path))
+        return yaml.safe_load(open(path))
