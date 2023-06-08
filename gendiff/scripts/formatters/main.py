@@ -9,6 +9,6 @@ from gendiff.scripts.formatters.stylish import to_string
 
 
 def formatted(diff, style):
-
     if style == 'stylish':
+        # print('where is my string???? =', to_string(diff))
         return to_string(diff)

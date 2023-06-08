@@ -32,14 +32,12 @@ def to_string(diff):
             result += f'{serialize(value2)}\n'
         else:
             name, value1, state = item.values()
-            print('item -->', item)
-            print('value1 -->', value1)
-            print('name -->', name)
-            print('state -->', state)
+            # print('item -->', item)
+            # print('value1 -->', value1)
+            # print('name -->', name)
+            # print('state -->', state)
             result += f'{REPLACER}{CHANGES[state]}{name}: '
             result += f'{serialize(value1)}\n'
 
     result += '}'
-    # print(result)
-    print('stylish', result)
     return result
