@@ -54,5 +54,4 @@ def get_state_tree(file1, file2):
                     }
 
     diff = list(map(get_state, union_keys))
-    print('diff ->', diff)
     return diff
