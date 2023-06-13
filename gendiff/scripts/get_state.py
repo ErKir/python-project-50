@@ -15,6 +15,12 @@ def get_state_tree(file1, file2):
             value1 = file1[key]
             value2 = file2[key]
             # print('value1 = ', file1[key])
+            if type(value1) is dict and type(value2) is dict:
+                return {
+                    'name': key,
+                    'state': 'nested',
+                    'children': get_state_tree(value1, value2)
+                }
             if value1 == value2:
                 # print('value1 == value2')
                 return {
@@ -48,4 +54,5 @@ def get_state_tree(file1, file2):
                     }
 
     diff = list(map(get_state, union_keys))
+    print('diff ->', diff)
     return diff
