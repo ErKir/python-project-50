@@ -13,3 +13,7 @@ Clone the repository and use make `package-install` command.
 ### Compare two simple YAML files
 
 [![asciicast](https://asciinema.org/a/2l2LuXXOIRHlTl1d48pjaX6Nv.svg)](https://asciinema.org/a/2l2LuXXOIRHlTl1d48pjaX6Nv)
+
+### Example of working with nested structures JSON or YAML files
+
+[![asciicast](https://asciinema.org/a/bw6RyqrfXXFztIhaxnMowagJ1.svg)](https://asciinema.org/a/bw6RyqrfXXFztIhaxnMowagJ1)
