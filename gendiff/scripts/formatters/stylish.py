@@ -17,7 +17,6 @@ def get_indents(level):
     indent_size = level * count
     current_space = replacer * (indent_size - 1)
     bracket_space = replacer * (indent_size - count)
-    # print('current_indent =>>', current_space, 'level =', level)
     return {
         "current_indent": current_space,
         "bracket_indent": bracket_space,
@@ -41,7 +40,6 @@ def stringify(value, level):
         result = f'{OPEN_BRACKET}'
         current_indent, bracket_indent = get_indents(level).values()
         for key, val in value.items():
-            print('key = ', key, 'val ==', val)
             result += f'\n{current_indent}  {key}: {stringify(val, level + 1)}'
         result += f'\n{bracket_indent}{CLOSE_BRACKET}'
         return result
