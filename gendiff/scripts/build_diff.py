@@ -9,7 +9,7 @@ def generate_diff(file1_path, file2_path, format='stylish'):
     file1 = parse(file1_path)
     file2 = parse(file2_path)
     diff = get_state_tree(file1, file2)
-    print('state tree ==>', diff)
+    # print('state tree ==>', diff)
     result = formatted(diff, format)
     print(result)
     return result
