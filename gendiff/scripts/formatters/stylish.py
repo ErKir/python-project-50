@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 
-REPLACER = '  '
 CHANGES = {
     'unchanged': '  ',
     'deleted': '- ',
@@ -8,8 +7,21 @@ CHANGES = {
 }
 
 
-OPEN_BRACKET = '{\n'
+OPEN_BRACKET = '{'
 CLOSE_BRACKET = '}'
+
+
+def get_indents(level):
+    count = 2
+    replacer = '  '
+    indent_size = level * count
+    current_space = replacer * (indent_size - 1)
+    bracket_space = replacer * (indent_size - count)
+    # print('current_indent =>>', current_space, 'level =', level)
+    return {
+        "current_indent": current_space,
+        "bracket_indent": bracket_space,
+    }
 
 
 def serialize(v):
@@ -24,28 +36,37 @@ def serialize(v):
             return v
 
 
+def stringify(value, level):
+    if type(value) is dict:
+        result = f'{OPEN_BRACKET}'
+        current_indent, bracket_indent = get_indents(level).values()
+        for key, val in value.items():
+            print('key = ', key, 'val ==', val)
+            result += f'\n{current_indent}  {key}: {stringify(val, level + 1)}'
+        result += f'\n{bracket_indent}{CLOSE_BRACKET}'
+        return result
+    return f'{serialize(value)}'
+
+
 def to_string(diff, deep=1):
-    result = OPEN_BRACKET
+    current_indent, bracket_indent = get_indents(deep).values()
+    result = OPEN_BRACKET + '\n'
     for item in diff:
         state = item['state']
         if state == 'nested':
             name, state, children = item.values()
-            result += f'{REPLACER * deep}{name}: '
+            result += f'{current_indent}  {name}: '
             result += f'{to_string(children, deep + 1)}\n'
         elif state == 'updated':
             name, value1, value2, state = item.values()
-            result += f'{REPLACER * deep}{CHANGES["deleted"]}{name}: '
-            result += f'{serialize(value1)}\n'
-            result += f'{REPLACER * deep}{CHANGES["added"]}{name}: '
-            result += f'{serialize(value2)}\n'
+            result += f'{current_indent}{CHANGES["deleted"]}{name}: '
+            result += f'{stringify(value1, deep + 1)}\n'
+            result += f'{current_indent}{CHANGES["added"]}{name}: '
+            result += f'{stringify(value2, deep + 1)}\n'
         else:
             name, value1, state = item.values()
-            # print('item -->', item)
-            # print('value1 -->', value1)
-            # print('name -->', name)
-            # print('state -->', state)
-            result += f'{REPLACER * deep}{CHANGES[state]}{name}: '
-            result += f'{serialize(value1)}\n'
+            result += f'{current_indent}{CHANGES[state]}{name}: '
+            result += f'{stringify(value1, deep + 1)}\n'
 
-    result += f'{REPLACER * deep}{CLOSE_BRACKET}'
+    result += f'{bracket_indent}{CLOSE_BRACKET}'
     return result
