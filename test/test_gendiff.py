@@ -7,19 +7,26 @@ def get_fixture_path(file_name):
     return os.path.join('test/fixtures', file_name)
 
 
-result = open(get_fixture_path('result.txt'))
-expected = result.read()
+FORMATS = ['stylish', 'plain']
 
 
 def test_with_json():
     filepath1 = get_fixture_path('file1.json')
     filepath2 = get_fixture_path('file2.json')
-    actual = generate_diff(filepath1, filepath2)
-    assert actual == expected
+    for format in FORMATS:
+        result_file_name = f'result_{format}.txt'
+        result = open(get_fixture_path(result_file_name))
+        expected = result.read()
+        actual = generate_diff(filepath1, filepath2, format)
+        assert actual == expected
 
 
 def test_with_yml():
     filepath1 = get_fixture_path('file1.yml')
     filepath2 = get_fixture_path('file2.yaml')
-    actual = generate_diff(filepath1, filepath2)
-    assert actual == expected
+    for format in FORMATS:
+        result_file_name = f'result_{format}.txt'
+        result = open(get_fixture_path(result_file_name))
+        expected = result.read()
+        actual = generate_diff(filepath1, filepath2, format)
+        assert actual == expected
