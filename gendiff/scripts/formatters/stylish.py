@@ -46,7 +46,7 @@ def stringify(value, level):
     return f'{serialize(value)}'
 
 
-def to_string(diff, deep=1):
+def stylish(diff, deep=1):
     current_indent, bracket_indent = get_indents(deep).values()
     result = OPEN_BRACKET + '\n'
     for item in diff:
@@ -54,7 +54,7 @@ def to_string(diff, deep=1):
         if state == 'nested':
             name, state, children = item.values()
             result += f'{current_indent}  {name}: '
-            result += f'{to_string(children, deep + 1)}\n'
+            result += f'{stylish(children, deep + 1)}\n'
         elif state == 'updated':
             name, value1, value2, state = item.values()
             result += f'{current_indent}{CHANGES["deleted"]}{name}: '
