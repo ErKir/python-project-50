@@ -35,7 +35,7 @@ def get_state_tree(file1, file2):
             return {
                     'name': key,
                     'value': value1,
-                    'state': 'deleted',
+                    'state': 'removed',
                     }
         else:
             value2 = file2[key]

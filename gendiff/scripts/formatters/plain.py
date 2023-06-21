@@ -1,40 +1,56 @@
 #!/usr/bin/env python3
 
+def serialize(v):
+    match v:
+        case True:
+            return 'true'
+        case False:
+            return 'false'
+        case None:
+            return 'null'
+        case _:
+            return v
+
 
 def stringify(value):
-    if value is int:
-        return value
-    if value is str:
-        return f'${value}'
-    if value is not dict:
-        return f'${value}'
-    return '[complex value]'
+    if type(value) is int:
+        return serialize(value)
+    if type(value) is str:
+        return f"'{serialize(value)}'"
+    if type(value) is dict:
+        return '[complex value]'
+    return f'{serialize(value)}'
 
 
-def plain(item):
-    def iter(currentItem, propNames):
+def plain(diff):
+    def iter(current_item, prop_names):
+
         def callback(obj):
-            name, value, type = obj.values()
-            currentPropName = [*propNames, name]
-            match(type):
+            name = obj['name']
+            state = obj['state']
+            current_prop_name = [*prop_names, name]
+            match(state):
                 case 'added':
-                    result = f'Property {".".join(currentPropName)} was {type}'
-                    result += f'with value: {stringify(value)}'
+                    result = f"Property '{'.'.join(current_prop_name)}'"
+                    result += f' was {state} with value: '
+                    result += f'{stringify(obj["value"])}'
                     return result
-                case 'deleted':
-                    return f'Property {".".join(currentPropName)} was {type}'
+                case 'removed':
+                    result = f"Property '{'.'.join(current_prop_name)}'"
+                    result += f" was {state}"
+                    return result
                 case 'updated':
-                    result = f'Property {".".join(currentPropName)} was {type}.'
-                    result += f' From {stringify(obj["value1"])}'
+                    result = f"Property '{'.'.join(current_prop_name)}'"
+                    result += f' was {state}. From {stringify(obj["value1"])}'
                     result += f' to {stringify(obj["value2"])}'
                     return result
                 case 'nested':
-                    return iter(value, currentPropName)
+                    return iter(obj['children'], current_prop_name)
                 case 'unchanged':
                     return ''
 
-        lines = map(callback, currentItem)
+        lines = list(map(callback, current_item))
+        strings = list(filter(lambda string: string != '', lines))
+        return '\n'.join(strings)
 
-        return '\n'.join(list(filter(lambda string: string != '', lines)))
-
-    return iter(item, [])
+    return iter(diff, [])

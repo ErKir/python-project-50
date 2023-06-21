@@ -2,7 +2,7 @@
 
 CHANGES = {
     'unchanged': '  ',
-    'deleted': '- ',
+    'removed': '- ',
     'added': '+ ',
 }
 
@@ -57,7 +57,7 @@ def stylish(diff, deep=1):
             result += f'{stylish(children, deep + 1)}\n'
         elif state == 'updated':
             name, value1, value2, state = item.values()
-            result += f'{current_indent}{CHANGES["deleted"]}{name}: '
+            result += f'{current_indent}{CHANGES["removed"]}{name}: '
             result += f'{stringify(value1, deep + 1)}\n'
             result += f'{current_indent}{CHANGES["added"]}{name}: '
             result += f'{stringify(value2, deep + 1)}\n'
