@@ -21,3 +21,7 @@ Clone the repository and use make `package-install` command.
 ### Example of working with "plain" formatter for JSON or YAML files
 
 [![asciicast](https://asciinema.org/a/P0XWojumoI3g5q8phEg0k5Fy9.svg)](https://asciinema.org/a/P0XWojumoI3g5q8phEg0k5Fy9)
+
+### Example of working with "json" formatter for JSON or YAML files
+
+[![asciicast](https://asciinema.org/a/RuDOkHqFuiigUR12d1l3xznLx.svg)](https://asciinema.org/a/RuDOkHqFuiigUR12d1l3xznLx)
