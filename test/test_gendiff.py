@@ -7,7 +7,7 @@ def get_fixture_path(file_name):
     return os.path.join('test/fixtures', file_name)
 
 
-FORMATS = ['stylish', 'plain']
+FORMATS = ['stylish', 'plain', 'json']
 
 
 def test_with_json():
