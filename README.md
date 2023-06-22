@@ -17,3 +17,7 @@ Clone the repository and use make `package-install` command.
 ### Example of working with nested structures JSON or YAML files
 
 [![asciicast](https://asciinema.org/a/bw6RyqrfXXFztIhaxnMowagJ1.svg)](https://asciinema.org/a/bw6RyqrfXXFztIhaxnMowagJ1)
+
+### Example of working with "plain" formatter for JSON or YAML files
+
+[![asciicast](https://asciinema.org/a/P0XWojumoI3g5q8phEg0k5Fy9.svg)](https://asciinema.org/a/P0XWojumoI3g5q8phEg0k5Fy9)
