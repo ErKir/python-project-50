@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import os
-from gendiff.scripts.build_diff import generate_diff
+from gendiff.scripts.build_diff import build_diff
 
 
 def get_fixture_path(file_name):
@@ -17,7 +17,7 @@ def test_with_json():
         result_file_name = f'result_{format}.txt'
         result = open(get_fixture_path(result_file_name))
         expected = result.read()
-        actual = generate_diff(filepath1, filepath2, format)
+        actual = build_diff(filepath1, filepath2, format)
         assert actual == expected
 
 
@@ -28,5 +28,5 @@ def test_with_yml():
         result_file_name = f'result_{format}.txt'
         result = open(get_fixture_path(result_file_name))
         expected = result.read()
-        actual = generate_diff(filepath1, filepath2, format)
+        actual = build_diff(filepath1, filepath2, format)
         assert actual == expected
