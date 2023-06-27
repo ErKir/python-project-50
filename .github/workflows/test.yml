@@ -24,6 +24,7 @@ jobs:
           pip install flake8
       - name: Lint and test
         run: |
+          pip install pytest-cov
           make package-test
           make lint
       - name: Test & publish code coverage
