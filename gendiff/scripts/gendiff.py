@@ -27,5 +27,9 @@ def generate_diff(first_file, second_file, format):
     return build_diff(first_file, second_file, format)
 
 
-if __name__ == '__main__':
+def main():
     generate_diff(args.first_file, args.second_file, args.format)
+
+
+if __name__ == '__main__':
+    main()
