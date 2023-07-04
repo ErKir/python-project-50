@@ -36,14 +36,14 @@ def get_state_tree(file1, file2):
                 'name': key,
                 'value': value1,
                 'state': 'removed',
-                }
+            }
         else:
             value2 = file2[key]
             return {
                 'name': key,
                 'value': value2,
                 'state': 'added',
-                }
+            }
 
     diff = list(map(get_state, union_keys))
     return diff

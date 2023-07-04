@@ -8,7 +8,7 @@ DESC = 'Compares two configuration files and shows a difference.'
 parser = argparse.ArgumentParser(
     prog='Gendiff',
     description=DESC,
-    )
+)
 
 parser.add_argument('first_file', type=str)
 parser.add_argument('second_file', type=str)
@@ -18,7 +18,7 @@ parser.add_argument(
     type=str,
     default='stylish',
     help='output format (default: stylish)',
-    )
+)
 
 args = parser.parse_args()
 
