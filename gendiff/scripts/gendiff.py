@@ -6,9 +6,9 @@ from gendiff.scripts.build_diff import build_diff
 DESC = 'Compares two configuration files and shows a difference.'
 
 parser = argparse.ArgumentParser(
-                    prog='Gendiff',
-                    description=DESC,
-                    )
+    prog='Gendiff',
+    description=DESC,
+    )
 
 parser.add_argument('first_file', type=str)
 parser.add_argument('second_file', type=str)

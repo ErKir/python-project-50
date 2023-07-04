@@ -19,31 +19,31 @@ def get_state_tree(file1, file2):
                 }
             if value1 == value2:
                 return {
-                        'name': key,
-                        'value': value1,
-                        'state': 'unchanged',
-                        }
+                    'name': key,
+                    'value': value1,
+                    'state': 'unchanged',
+                }
             else:
                 return {
-                        'name': key,
-                        'value1': value1,
-                        'value2': value2,
-                        'state': 'updated',
-                        }
+                    'name': key,
+                    'value1': value1,
+                    'value2': value2,
+                    'state': 'updated',
+                }
         elif key in file1 and key not in file2:
             value1 = file1[key]
             return {
-                    'name': key,
-                    'value': value1,
-                    'state': 'removed',
-                    }
+                'name': key,
+                'value': value1,
+                'state': 'removed',
+                }
         else:
             value2 = file2[key]
             return {
-                    'name': key,
-                    'value': value2,
-                    'state': 'added',
-                    }
+                'name': key,
+                'value': value2,
+                'state': 'added',
+                }
 
     diff = list(map(get_state, union_keys))
     return diff
