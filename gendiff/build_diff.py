@@ -10,5 +10,4 @@ def build_diff(file1_path, file2_path, format='stylish'):
     file2 = parse(file2_path)
     diff = get_state_tree(file1, file2)
     result = formatted(diff, format)
-    print(result)
     return result
