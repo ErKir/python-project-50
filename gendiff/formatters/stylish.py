@@ -7,10 +7,6 @@ CHANGES = {
 }
 
 
-OPEN_BRACKET = '{'
-CLOSE_BRACKET = '}'
-
-
 def get_indents(level):
     count = 2
     replacer = '  '
@@ -37,18 +33,19 @@ def serialize(v):
 
 def stringify(value, level):
     if type(value) is dict:
-        result = f'{OPEN_BRACKET}'
+        result = '{'
         current_indent, bracket_indent = get_indents(level).values()
         for key, val in value.items():
             result += f'\n{current_indent}  {key}: {stringify(val, level + 1)}'
-        result += f'\n{bracket_indent}{CLOSE_BRACKET}'
+        result += f'\n{bracket_indent}'
+        result += '}'
         return result
     return f'{serialize(value)}'
 
 
 def stylish(diff, deep=1):
     current_indent, bracket_indent = get_indents(deep).values()
-    result = OPEN_BRACKET + '\n'
+    result = '{\n'
     for item in diff:
         state = item['state']
         if state == 'nested':
@@ -66,5 +63,6 @@ def stylish(diff, deep=1):
             result += f'{current_indent}{CHANGES[state]}{name}: '
             result += f'{stringify(value1, deep + 1)}\n'
 
-    result += f'{bracket_indent}{CLOSE_BRACKET}'
+    result += f'{bracket_indent}'
+    result += '}'
     return result
