@@ -13,6 +13,7 @@ For comparison, use the following command `gendiff filepath1 filepath2`
 the library will return the difference between files in the default format *stylish*
 To return the result in a different format, use the `--format` flag and the format name,
 the following formats are available: *plain*, *json* and also *stylish* as default.
+
 For example: `gendiff --format plain filepath1 filepath2`
 
 ### Compare two simple JSON files
