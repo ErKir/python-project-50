@@ -2,9 +2,18 @@
 
 [![Actions Status](https://github.com/ErKir/python-project-50/workflows/hexlet-check/badge.svg)](https://github.com/ErKir/python-project-50/actions)[![Maintainability](https://api.codeclimate.com/v1/badges/24934b800a309cd750f8/maintainability)](https://codeclimate.com/github/ErKir/python-project-50/maintainability)[![Test Coverage](https://api.codeclimate.com/v1/badges/24934b800a309cd750f8/test_coverage)](https://codeclimate.com/github/ErKir/python-project-50/test_coverage)
 
+Project description: The project implements the function of comparing **json** or **yaml** files and outputting the difference in different formats.
+
 ## Get started
 
-Clone the repository and use make `package-install` command.
+Clone the repository and use `make package-install` command.
+For help use `gendiff -h` command.
+
+For comparison, use the following command `gendiff filepath1 filepath2`
+the library will return the difference between files in the default format *stylish*
+To return the result in a different format, use the `--format` flag and the format name,
+the following formats are available: *plain*, *json* and also *stylish* as default.
+For example: `gendiff --format plain filepath1 filepath2`
 
 ### Compare two simple JSON files
 
