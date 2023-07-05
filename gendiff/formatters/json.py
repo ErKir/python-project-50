@@ -3,6 +3,4 @@ import json
 
 
 def jsonify(result):
-    result = sorted(result, key=lambda x: x["name"])
-    result = json.dumps(result)
-    return result
+    return json.dumps(result)
