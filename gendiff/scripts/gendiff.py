@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 import argparse
-from gendiff.scripts.build_diff import build_diff
+from gendiff.build_diff import build_diff
 
 DESC = 'Compares two configuration files and shows a difference.'
 

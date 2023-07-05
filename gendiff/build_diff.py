@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 
-from gendiff.scripts.parsers import parse
-from gendiff.scripts.get_state import get_state_tree
-from gendiff.scripts.formatters.main import formatted
+from gendiff.parsers import parse
+from gendiff.get_state import get_state_tree
+from gendiff.formatters.main import formatted
 
 
 def build_diff(file1_path, file2_path, format='stylish'):

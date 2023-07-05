@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import os
-from gendiff.scripts.build_diff import build_diff
+from gendiff.build_diff import build_diff
 
 
 def get_fixture_path(file_name):
