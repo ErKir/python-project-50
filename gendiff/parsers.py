@@ -4,9 +4,18 @@ import yaml
 import json
 
 
+EXTENSIONS = {
+    'json': json.load,
+    'yaml': yaml.safe_load,
+    'yml': yaml.safe_load,
+}
+
+
 def parse(path):
     normalized_name = path.lower()
-    if normalized_name.endswith('json'):
-        return json.load(open(path))
-    else:
-        return yaml.safe_load(open(path))
+    extension = normalized_name.split('.')[1]
+    data = open(path)
+    if extension not in EXTENSIONS:
+        raise ValueError('Unsupported format. Next formats are supported: {}'
+                         .format(EXTENSIONS.keys()))
+    return EXTENSIONS[extension](data)
