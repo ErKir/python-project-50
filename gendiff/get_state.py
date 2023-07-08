@@ -11,7 +11,7 @@ def build_state_tree(file1, file2):
         if key in file1 and key in file2:
             value1 = file1[key]
             value2 = file2[key]
-            if type(value1) is dict and type(value2) is dict:
+            if isinstance(value1, dict) and isinstance(value2, dict):
                 return {
                     'name': key,
                     'state': 'nested',
