@@ -2,7 +2,7 @@
 
 from gendiff.parsers import parse
 from gendiff.build_tree import build_state_tree
-from gendiff.formatters.main import formatted
+from gendiff.formatters import formatted
 
 
 def generate_diff(file1_path, file2_path, format='stylish'):
