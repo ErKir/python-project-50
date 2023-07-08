@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 
-def get_state_tree(file1, file2):
+def build_state_tree(file1, file2):
     keys1 = set(file1.keys())
     keys2 = set(file2.keys())
 
     union_keys = list(set.union(keys2, keys1))
     union_keys.sort()
 
-    def get_state(key):
+    def build_state(key):
         if key in file1 and key in file2:
             value1 = file1[key]
             value2 = file2[key]
@@ -15,7 +15,7 @@ def get_state_tree(file1, file2):
                 return {
                     'name': key,
                     'state': 'nested',
-                    'children': get_state_tree(value1, value2)
+                    'children': build_state_tree(value1, value2)
                 }
             if value1 == value2:
                 return {
@@ -45,5 +45,5 @@ def get_state_tree(file1, file2):
                 'state': 'added',
             }
 
-    diff = list(map(get_state, union_keys))
+    diff = list(map(build_state, union_keys))
     return diff
