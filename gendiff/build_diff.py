@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 from gendiff.parsers import parse
-from gendiff.get_state import build_state_tree
+from gendiff.build_tree import build_state_tree
 from gendiff.formatters.main import formatted
 
 
