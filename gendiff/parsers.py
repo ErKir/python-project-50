@@ -12,8 +12,8 @@ EXTENSIONS = {
 
 
 def parse(path):
-    normalized_name = path.lower()
-    extension = normalized_name.split('.')[1]
+    name_parts = path.split('.')
+    extension = name_parts[len(name_parts) - 1].lower()
     data = open(path)
     if extension not in EXTENSIONS:
         raise ValueError('Unsupported format. Next formats are supported: {}'
