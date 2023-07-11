@@ -11,7 +11,7 @@ def main():
         user_data.first_file,
         user_data.second_file,
         user_data.format)
-        )
+    )
 
 
 if __name__ == '__main__':
