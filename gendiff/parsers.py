@@ -11,11 +11,8 @@ EXTENSIONS = {
 }
 
 
-def parse(path):
-    name_parts = path.split('.')
-    extension = name_parts[len(name_parts) - 1].lower()
-    data = open(path)
+def parse(file, extension):
     if extension not in EXTENSIONS:
         raise ValueError('Unsupported format. Next formats are supported: {}'
                          .format(EXTENSIONS.keys()))
-    return EXTENSIONS[extension](data)
+    return EXTENSIONS[extension](file)
