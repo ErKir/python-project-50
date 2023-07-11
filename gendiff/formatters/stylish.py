@@ -19,8 +19,8 @@ def get_indents(level):
     }
 
 
-def serialize(v):
-    match v:
+def serialize(value):
+    match value:
         case True:
             return 'true'
         case False:
@@ -28,7 +28,7 @@ def serialize(v):
         case None:
             return 'null'
         case _:
-            return v
+            return value
 
 
 def stringify(value, level):
