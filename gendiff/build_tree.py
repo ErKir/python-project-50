@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 def build_state_tree(file1, file2):
     keys1 = set(file1.keys())
     keys2 = set(file2.keys())
