@@ -1,14 +1,14 @@
-def build_state_tree(file1, file2):
-    keys1 = set(file1.keys())
-    keys2 = set(file2.keys())
+def build_state_tree(data1, data2):
+    keys1 = set(data1.keys())
+    keys2 = set(data2.keys())
 
     union_keys = list(set.union(keys2, keys1))
     union_keys.sort()
 
     def build_state(key):
-        if key in file1 and key in file2:
-            value1 = file1[key]
-            value2 = file2[key]
+        if key in data1 and key in data2:
+            value1 = data1[key]
+            value2 = data2[key]
             if isinstance(value1, dict) and isinstance(value2, dict):
                 return {
                     'name': key,
@@ -28,15 +28,15 @@ def build_state_tree(file1, file2):
                     'value2': value2,
                     'state': 'updated',
                 }
-        elif key in file1 and key not in file2:
-            value1 = file1[key]
+        elif key in data1 and key not in data2:
+            value1 = data1[key]
             return {
                 'name': key,
                 'value': value1,
                 'state': 'removed',
             }
         else:
-            value2 = file2[key]
+            value2 = data2[key]
             return {
                 'name': key,
                 'value': value2,
